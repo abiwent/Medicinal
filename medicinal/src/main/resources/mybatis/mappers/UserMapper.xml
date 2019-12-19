@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ahpu.medicinal.mapper.UserMapper">
+
+    <!--public User findUserByUsername(String username);-->
+    <select id="findUserByUsername" parameterType="String"
+            resultType="cn.ahpu.medicinal.pojo.User">
+        SELECT * FROM m_user WHERE username = #{username}
+    </select>
+
+    <!-- public void upUser(User user);-->
+    <update id="upUser" parameterType="cn.ahpu.medicinal.pojo.User">
+        UPDATE m_user SET password=#{password} WHERE username=#{username}
+    </update>
+
+</mapper>

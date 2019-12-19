@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ahpu.medicinal.mapper.MedicinalMapper">
+
+    <!--public  Medicinal selectById(int mno);-->
+    <select id="selectById" parameterType="int" resultType="cn.ahpu.medicinal.pojo.Medicinal">
+        SELECT * FROM m_pro WHERE mno = #{mno}
+    </select>
+
+    <!--public List<Medicinal> findAll();-->
+    <select id="findAll" resultType="cn.ahpu.medicinal.pojo.Medicinal">
+        SELECT * FROM m_pro
+    </select>
+
+    <!--public void updataMedicinal(Medicinal medicinal);-->
+    <update id="updataMedicinal" parameterType="cn.ahpu.medicinal.pojo.Medicinal">
+        UPDATE m_pro SET mname=#{mname},mprice=#{mprice},mmadetime=#{mmadetime},mcount=#{mcount}
+          WHERE mno=#{mno}
+    </update>
+
+    <!--public void insertMedicinal(Medicinal medicinal);-->
+    <insert id="insertMedicinal" parameterType="cn.ahpu.medicinal.pojo.Medicinal">
+        INSERT INTO m_pro VALUE (#{mno},#{mname},#{mprice},#{mmadetime},#{mcount})
+    </insert>
+
+    <!--public void deleteMedicinal(Integer mno);-->
+    <delete id="deleteMedicinal" parameterType="Integer">
+        DELETE FROM m_pro WHERE mno=#{mno}
+    </delete>
+
+</mapper>

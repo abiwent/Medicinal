@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ahpu.medicinal.mapper.OrderMapper">
+
+    <!--public void addInput(Input input);-->
+    <insert id="addInput" parameterType="cn.ahpu.medicinal.pojo.Input">
+        INSERT INTO m_input VALUE (#{iuuid},#{mno},#{mcount},#{idate},#{iuser})
+    </insert>
+
+    <!--public void addOutput(Output output);-->
+    <insert id="addOutput" parameterType="cn.ahpu.medicinal.pojo.Output">
+        INSERT INTO m_output VALUE (#{ouuid},#{mno},#{mcount},#{odate},#{ouser})
+    </insert>
+
+    <!--public List<Input> findAllInput();-->
+    <select id="findAllInput" resultType="cn.ahpu.medicinal.pojo.Input" >
+        SELECT * FROM m_input
+    </select>
+
+    <!--public List<Output> findAllOutput();-->
+    <select id="findAllOutput" resultType="cn.ahpu.medicinal.pojo.Output">
+        SELECT * FROM m_output
+    </select>
+
+    <!--public void deleteIn(String iuuid);-->
+    <delete id="deleteIn" parameterType="String">
+        DELETE FROM m_input WHERE iuuid=#{iuuid}
+    </delete>
+
+    <!--public void deleteOut(String ouuid);-->
+    <delete id="deleteOut" parameterType="String">
+        DELETE FROM m_output WHERE ouuid=#{ouuid}
+    </delete>
+
+    <!--public Input selectByIn(String iuuid);-->
+    <select id="selectByIn" parameterType="String" resultType="cn.ahpu.medicinal.pojo.Input">
+        SELECT * FROM m_input WHERE iuuid=#{iuuid}
+    </select>
+
+    <!--public Output selectByOut(String ouuid);-->
+    <select id="selectByOut" parameterType="String" resultType="cn.ahpu.medicinal.pojo.Output">
+        SELECT * FROM  m_output WHERE ouuid=#{ouuid}
+    </select>
+
+    <!--public void updataIn(Input input);-->
+    <update id="updataIn" parameterType="cn.ahpu.medicinal.pojo.Input">
+        UPDATE m_input SET mno=#{mno},mcount=#{icount},idate=#{idate},iuser=#{iuser}
+          WHERE iuuid=#{iuuid}
+    </update>
+
+    <!--public void updataOut(Output output);-->
+    <update id="updataOut" parameterType="cn.ahpu.medicinal.pojo.Output">
+        UPDATE m_output SET mno=#{mno},mcount=#{ocount},odate=#{odate},ouser=#{ouser}
+          WHERE ouuid=#{ouuid}
+    </update>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ahpu.medicinal.mapper.MedicinalTableMapper">
+
+
+    <!--public List<MedicinalTable> findAllIn();-->
+    <select id="findAllIn" resultType="cn.ahpu.medicinal.pojo.MedicinalTable">
+        SELECT iuuid tuuid,m_pro.mno,mname,m_pro.mprice,m_pro.msellprice,m_input.mcount tput,m_input.iuser tuser,m_input.idate tdate
+          FROM m_pro,m_input
+            WHERE m_pro.mno=m_input.mno
+    </select>
+
+    <!--public List<MedicinalTable> findAllOut();-->
+    <select id="findAllOut" resultType="cn.ahpu.medicinal.pojo.MedicinalTable">
+        SELECT ouuid tuuid,m_pro.mno,mname,m_pro.mprice,m_pro.msellprice,m_output.mcount tput,m_output.ouser tuser,m_output.odate tdate
+          FROM m_pro,m_output
+            WHERE m_pro.mno=m_output.mno
+    </select>
+
+
+</mapper>
